@@ -29,8 +29,8 @@
 #include <SoftwareSerial.h>
 
 #include "Hex_CFG.h"
-#include "Phoenix.h"
-#include "Phoenix_Input_PS2.h"
-#include "Phoenix_Driver_SSC32.h"
-#include "Phoenix_Code.h"
+#include "Capers.h"
+#include "Capers_Input_PS2.h"
+#include "Capers_Driver_SSC32.h"
+#include "Capers_Code.h"
 
