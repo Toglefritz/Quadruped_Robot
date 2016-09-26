@@ -24,10 +24,6 @@ recommended.
 
 ## Installation
 
-To use this code you need to copy each of the included directories into your Arduino Library directory.  
+To use this code you need to copy each of the folders inside the *libraries* directory into your Arduino Library directory.  
 
-In the Arduino IDE, create a blank sketch. Then, simply go to the **file** menu, choose the **Examples** menu item, then
-in this sub-menu there should be a menu item labeled **Phoenix**, which, when chosen, should give you several configurations.
-
-Once you load a configuration, you can then save this sketch into your own sketchbook and make any modifications that are necessary or desired to make your robot
-work correctly.
+In the Arduino IDE, open **Capers_PS2_SSC32.ino**. Customize the code as needed to suit your robot's geometry and supplemental hardware (like LEDs).
