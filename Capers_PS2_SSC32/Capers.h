@@ -12,8 +12,8 @@
 //  
 //==============================================================================
 
-#ifndef _PHOENIX_CORE_H_
-#define _PHOENIX_CORE_H_
+#ifndef _CAPERS_CORE_H_
+#define _CAPERS_CORE_H_
 #include <stdarg.h>
 //#include <EEPROM.h>
 #if defined(__SAM3X8E__)
@@ -159,7 +159,7 @@ COORD3D;
 // Define Gait structure/class - Hopefully allow specific robots to define their
 // own gaits and/or define which of the standard ones they want.
 //==============================================================================
-typedef struct _PhoenixGait {
+typedef struct _CapersGait {
 	short	 		NomGaitSpeed;		//Nominal speed of the gait
 	byte            StepsInGait;         //Number of steps in gait
 	byte            NrLiftedPos;         //Number of positions that a single leg is lifted [1-3]
@@ -180,7 +180,7 @@ typedef struct _PhoenixGait {
     PGM_P           pszName;             // The gait name
 #endif
 } 
-PHOENIXGAIT;
+CAPERSGAIT;
 
 #ifdef DISPLAY_GAIT_NAMES
 #define GAITNAME(name)  ,name
@@ -206,7 +206,7 @@ typedef struct _InControlState {
   //[gait]
   byte			GaitType;			 //Gait type
   byte          GaitStep;            //Actual current step in gait
-  PHOENIXGAIT   gaitCur;             // Definition of the current gait
+  CAPERSGAIT   gaitCur;             // Definition of the current gait
 
     short       LegLiftHeight;		 //Current Travel height
   COORD3D       TravelLength;        // X-Z or Length, Y is rotation.

@@ -6,6 +6,16 @@
 // This code is specifically configured for the Lynxmotion BotBoarduino using the 
 // SSC-32 servo controller.
 //
+// Before uploading this code to your robot, make sure to properly configure the 
+// settings in the Hex_Cfg.h file. The settings which will need to be configured 
+// for your specific robot are
+//   * The lenghts of each leg section
+//   * The mechanical limits of each servo
+//   * The dimensions of the body
+//   * The angular offsets between the center of the body and each leg
+//   * The distance offset between the center of the body and each leg
+//   * Feed starting positions
+//
 //=============================================================================
 // Header Files
 //=============================================================================
