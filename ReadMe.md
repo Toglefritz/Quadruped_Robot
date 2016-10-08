@@ -1,5 +1,12 @@
 # Capers the Hexapod Robot
 
+## Project Description
+
+Capers is a hexapod robot that the code in this repository is designed to control. Hexapod robots are robots with six legs. Capers is designed with three degrees of freedom per leg. Each leg is actuated by three servos. The first servo moves the leg forward/backward, the second servo moves the leg up and down, and the third servo bends the leg in the middle. With six legs and three servos per leg, the robot is driven by 18 servos in total, plus it has another auxiliary servo for controling the robot's head. 
+
+The parts necessary to build the robot's frame can be found in the *frame* directory of this repository. The frame is design to be laser cut. Any type of material may be used for the frame, but it is wise to avoid brittle materials like acrylic.
+
+
 ## Attribution
 
 The code in this repository was originally developed by GitHub user KurtE.
@@ -21,6 +28,8 @@ come in a variety of shapes and sizes allow the easy addition of lighting effect
 Hexapod robots use a total of 18 servos. Since the robot itself can be quite heavy depending upon the construction, it is important to equip
 the robot with servos that are strong enough to support the robot's weight. Servos which provide at least 8 kg/cm of torque are
 recommended.
+
+The robot's frame is constructed from laser-cut materials. The design files for the frame can be found in the *frame* directory of this repository.
 
 ## Installation
 
