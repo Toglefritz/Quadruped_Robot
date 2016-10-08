@@ -1,29 +1,17 @@
 //=============================================================================
-//Project Lynxmotion Phoenix
-//Description: Phoenix software
+// Project: Capers Hexapod
+// Description: This code controls a hexapod robot with three degrees of 
+//              freedom per leg. 
 //
-//Programmer: Jeroen Janssen [aka Xan]
-//         Kurt Eckhardt(KurtE) converted to C and Arduino
-//   Kare Halvorsen aka Zenta - Makes everything work correctly!     
-//
-// This version of the Phoenix code was ported over to the Arduino Environement
-//
-//
-// Phoenix.h - This is the first header file that is needed to build
+// Capers.h - This is the first header file that is needed to build
 //			a Phoenix program for a specific Hex Robot.
 //
 //
 // This file assumes that the main source file either directly or through include
 // file has defined all of the configuration information for the specific robot.
-// Each robot will also need to include:
 //  
-//=============================================================================
-//
-//KNOWN BUGS:
-//    - Lots ;)
-//
-//=============================================================================
 //==============================================================================
+
 #ifndef _PHOENIX_CORE_H_
 #define _PHOENIX_CORE_H_
 #include <stdarg.h>

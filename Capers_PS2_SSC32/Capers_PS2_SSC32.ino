@@ -1,19 +1,10 @@
 //=============================================================================
-//Project Lynxmotion Phoenix
-//Description: Phoenix software
-//Software version: V2.0
-//Date: 29-10-2009
-//Programmer: Jeroen Janssen [aka Xan]
-//         Kurt Eckhardt(KurtE) converted to C and Arduino
-//   Kåre Halvorsen aka Zenta - Makes everything work correctly!     
+// Project: Capers Hexapod
+// Description: This code controls a hexapod robot with three degrees of 
+//              freedom per leg. 
 //
-// This version of the Phoenix code was ported over to the Arduino Environement
-// and is specifically configured for the Lynxmotion BotBoarduino 
-//
-//=============================================================================
-//
-//KNOWN BUGS:
-//    - Lots ;)
+// This code is specifically configured for the Lynxmotion BotBoarduino using the 
+// SSC-32 servo controller.
 //
 //=============================================================================
 // Header Files

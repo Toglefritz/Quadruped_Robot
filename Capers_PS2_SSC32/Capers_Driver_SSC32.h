@@ -1,8 +1,7 @@
-//====================================================================
-//Project Lynxmotion Phoenix
-//
-// Servo Driver - This version is setup to use the SSC-32 to control
-// the servos.
+//=============================================================================
+// Project: Capers Hexapod
+// Description: This code controls a hexapod robot with three degrees of 
+//              freedom per leg. 
 //====================================================================
 
 //Servo Pin numbers - May be SSC-32 or actual pins on main controller, depending on configuration.
