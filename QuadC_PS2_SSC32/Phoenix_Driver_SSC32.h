@@ -1,7 +1,8 @@
-//=============================================================================
-// Project: Capers Hexapod
-// Description: This code controls a hexapod robot with three degrees of 
-//              freedom per leg. 
+//====================================================================
+//Project Lynxmotion Phoenix
+//
+// Servo Driver - This version is setup to use the SSC-32 to control
+// the servos.
 //====================================================================
 
 //Servo Pin numbers - May be SSC-32 or actual pins on main controller, depending on configuration.
@@ -104,22 +105,18 @@ void ServoDriver::Init(void) {
 #define CVADR2      10  // VD Resistor 2
 #endif
 
-uint16_t  g_awVoltages[8]={
+word  g_awVoltages[8]={
   0,0,0,0,0,0,0,0};
-uint16_t  g_wVoltageSum = 0;
+word  g_wVoltageSum = 0;
 byte  g_iVoltages = 0;
 
-uint16_t ServoDriver::GetBatteryVoltage(void) {
+word ServoDriver::GetBatteryVoltage(void) {
   g_iVoltages = (++g_iVoltages)&0x7;  // setup index to our array...
   g_wVoltageSum -= g_awVoltages[g_iVoltages];
   g_awVoltages[g_iVoltages] = analogRead(cVoltagePin);
   g_wVoltageSum += g_awVoltages[g_iVoltages];
 
-#ifdef CVREF
-  return ((long)((long)g_wVoltageSum*CVREF*(CVADR1+CVADR2))/(long)(8192*(long)CVADR2));  
-#else
   return ((long)((long)g_wVoltageSum*125*(CVADR1+CVADR2))/(long)(2048*(long)CVADR2));  
-#endif
 
 }
 #endif
@@ -325,13 +322,35 @@ void ServoDriver::OutputServoInfoForLeg(byte LegIndex, short sCoxaAngle1, short 
   word    wTarsSSCV;        //
 #endif
 
-  // The Main code now takes care of the inversion before calling.
-  wCoxaSSCV = ((long)(sCoxaAngle1 +900))*1000/cPwmDiv+cPFConst;
-  wFemurSSCV = ((long)((long)(sFemurAngle1+900))*1000/cPwmDiv+cPFConst);
-  wTibiaSSCV = ((long)(sTibiaAngle1+900))*1000/cPwmDiv+cPFConst;
+  //Update Right Legs
+  g_InputController.AllowControllerInterrupts(false);    // If on xbee on hserial tell hserial to not processess...
+#ifndef QUADMODE  
+  if (LegIndex < (CNT_LEGS/2)) {
+    wCoxaSSCV = ((long)(-sCoxaAngle1 +900))*1000/cPwmDiv+cPFConst;
+    wFemurSSCV = ((long)(-sFemurAngle1+900))*1000/cPwmDiv+cPFConst;
+    wTibiaSSCV = ((long)(-sTibiaAngle1+900))*1000/cPwmDiv+cPFConst;
 #ifdef c4DOF
-  wTarsSSCV = ((long)(sTarsAngle1+900))*1000/cPwmDiv+cPFConst;
+    wTarsSSCV = ((long)(-sTarsAngle1+900))*1000/cPwmDiv+cPFConst;
 #endif
+  } 
+  else {
+    wCoxaSSCV = ((long)(sCoxaAngle1 +900))*1000/cPwmDiv+cPFConst;
+    wFemurSSCV = ((long)((long)(sFemurAngle1+900))*1000/cPwmDiv+cPFConst);
+    wTibiaSSCV = ((long)(sTibiaAngle1+900))*1000/cPwmDiv+cPFConst;
+#ifdef c4DOF
+    wTarsSSCV = ((long)(sTarsAngle1+900))*1000/cPwmDiv+cPFConst;
+#endif
+  }
+#else
+    // inverting of the angles is done in the phoenix code for quad mode
+    wCoxaSSCV = ((long)(sCoxaAngle1 +900))*1000/cPwmDiv+cPFConst;
+    wFemurSSCV = ((long)((long)(sFemurAngle1+900))*1000/cPwmDiv+cPFConst);
+    wTibiaSSCV = ((long)(sTibiaAngle1+900))*1000/cPwmDiv+cPFConst;
+#ifdef c4DOF
+    wTarsSSCV = ((long)(sTarsAngle1+900))*1000/cPwmDiv+cPFConst;
+#endif
+
+#endif  
 
 #ifdef cSSC_BINARYMODE
   SSCSerial.write(pgm_read_byte(&cCoxaPin[LegIndex])  + 0x80);
@@ -418,14 +437,6 @@ void ServoDriver::FreeServos(void)
   }
   SSCSerial.print("T200\r");
   g_InputController.AllowControllerInterrupts(true);    
-}
-
-//--------------------------------------------------------------------
-//Function that gets called from the main loop if the robot is not logically
-//     on.  Gives us a chance to play some...
-//--------------------------------------------------------------------
-void ServoDriver::IdleTime(void)
-{
 }
 
 #ifdef OPT_TERMINAL_MONITOR  
