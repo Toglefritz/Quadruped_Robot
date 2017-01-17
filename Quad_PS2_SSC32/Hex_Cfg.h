@@ -1,5 +1,6 @@
 //=============================================================================
-// Project: Quadruped
+// Project: Jeb the Quadruped Robot
+//
 // Description: This code controls a quadruped robot with three degrees of 
 //              freedom per leg.
 //  
@@ -13,9 +14,6 @@
 //====================================================================
 #ifndef HEX_CFG_CHR3_H
 #define HEX_CFG_CHR3_H
-
-
-// Which type of control(s) do you want to compile in
 
 //#define DEBUG
 
@@ -82,9 +80,11 @@
 #define PS2_CMD      7
 #define PS2_SEL      8
 #define PS2_CLK      9
-
+// Connections to SSC-32 servo controller
 #define cSSC_OUT     10      	// Output pin for (SSC32 RX) on BotBoard (Yellow)
 #define cSSC_IN      11      	// Input pin for (SSC32 TX) on BotBoard (Blue)
+// Connections to NeoPiexel Ring eye
+#define eye_data 3
 
 // XBee was defined to use a hardware Serial port
 #define XBEE_BAUD        38400
@@ -95,7 +95,7 @@
 #define cTurnOffVol  470     // 4.7v
 #define cTurnOnVol   550     // 5.5V - optional part to say if voltage goes back up, turn it back on...
 
-//====================================================================
+//--------------------------------------------------------------------
 //[SSC32 Pin Numbers]
 #define cRRCoxaPin      0   //Rear Right leg Hip Horizontal
 #define cRRFemurPin     1   //Rear Right leg Hip Vertical
@@ -182,9 +182,9 @@
 // Universal dimensions for each leg in mm
 // Use these universal dimensions if each of the robot's legs has
 // the same dimensions.
-#define cXXCoxaLength     29    // This is for CH3-R with Type 3 legs
-#define cXXFemurLength    57
-#define cXXTibiaLength    141
+#define cXXCoxaLength     65    // Length from coxa servo horn to first femur servo horn
+#define cXXFemurLength    103   // Length between femur servo horns
+#define cXXTibiaLength    161   // Length from second femur servo horn to end of tibia
 #define cXXTarsLength     85    // 4DOF only...
 
 // Individual dimensions for each leg in mm
@@ -212,21 +212,20 @@
 //--------------------------------------------------------------------
 //[BODY DIMENSIONS]
 // This first section defines the angle from the center of the body to each of the legs
-#define cRRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
-#define cRFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
-#define cLRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
-#define cLFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
+#define cRRCoxaAngle1   -45   //Default Coxa setup angle, decimals = 1
+#define cRFCoxaAngle1    45   //Default Coxa setup angle, decimals = 1
+#define cLRCoxaAngle1   -45   //Default Coxa setup angle, decimals = 1
+#define cLFCoxaAngle1    45   //Default Coxa setup angle, decimals = 1
 
 // This second section defines the distances between the center of the body to each of the legs
-#define cRROffsetX      -54    //Distance X from center of the body to the Right Rear coxa
-#define cRROffsetZ       54    //Distance Z from center of the body to the Right Rear coxa
-#define cRFOffsetX      -54    //Distance X from center of the body to the Right Front coxa
-#define cRFOffsetZ      -54    //Distance Z from center of the body to the Right Front coxa
-
-#define cLROffsetX       54    //Distance X from center of the body to the Left Rear coxa
-#define cLROffsetZ       54    //Distance Z from center of the body to the Left Rear coxa
-#define cLFOffsetX       54     //Distance X from center of the body to the Left Front coxa
-#define cLFOffsetZ      -54    //Distance Z from center of the body to the Left Front coxa
+#define cRROffsetX      -70    //Distance X from center of the body to the Right Rear coxa
+#define cRROffsetZ       70    //Distance Z from center of the body to the Right Rear coxa
+#define cRFOffsetX      -70    //Distance X from center of the body to the Right Front coxa
+#define cRFOffsetZ      -70    //Distance Z from center of the body to the Right Front coxa
+#define cLROffsetX       70    //Distance X from center of the body to the Left Rear coxa
+#define cLROffsetZ       70    //Distance Z from center of the body to the Left Rear coxa
+#define cLFOffsetX       70     //Distance X from center of the body to the Left Front coxa
+#define cLFOffsetZ      -70    //Distance Z from center of the body to the Left Front coxa
 
 //--------------------------------------------------------------------
 //[START POSITIONS FEET]

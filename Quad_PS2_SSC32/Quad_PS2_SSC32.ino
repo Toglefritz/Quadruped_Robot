@@ -1,5 +1,6 @@
 //=============================================================================
-// Project: Quadruped
+// Project: Jeb the Quadruped Robot
+//
 // Description: This code controls a quadruped robot with three degrees of 
 //              freedom per leg. 
 //
@@ -28,6 +29,11 @@
 #include <Wire.h>
 #include <EEPROM.h>
 #include <PS2X_lib.h>
+
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
 
 #include <SoftwareSerial.h>
 #include "Hex_CFG.h"

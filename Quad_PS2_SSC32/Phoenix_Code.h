@@ -1,5 +1,6 @@
 //=============================================================================
-// Project: Quadruped
+// Project: Jeb the Quadruped Robot
+//
 // Description: This code controls a quadruped robot with three degrees of 
 //              freedom per leg. 
 //
@@ -431,6 +432,41 @@ extern unsigned long isqrt32 (unsigned long n);
 extern void StartUpdateServos(void);
 extern boolean TerminalMonitor(void);
 
+//--------------------------------------------------------------------
+// [NeoPixel Ring Setup]
+#define PIN 3
+#define NUM_LEDS 16
+#define BRIGHTNESS 20
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRBW + NEO_KHZ800);
+
+// Fill the dots one after the other with a color
+void colorCircle(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i+1, c);
+    strip.setPixelColor(i, (0, 0, 0));
+    strip.setPixelColor(i+1+(strip.numPixels()/2), c);
+    strip.setPixelColor(i+(strip.numPixels()/2), (204, 20, 155));
+    strip.setPixelColor(i+1+(strip.numPixels()/4), c);
+    strip.setPixelColor(i+(strip.numPixels()/4), (204, 20, 155));
+    strip.setPixelColor(i+1+(strip.numPixels()/4)*3, c);
+    strip.setPixelColor(i+(strip.numPixels()/4)*3, (204, 20, 155));
+    strip.show();
+    delay(wait);
+  }
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i+1+(strip.numPixels()/5), c);
+    strip.setPixelColor(i+(strip.numPixels()/5), (204, 20, 155));
+    strip.setPixelColor(i+1+(strip.numPixels()/5)*2, c);
+    strip.setPixelColor(i+(strip.numPixels()/5)*2, (204, 20, 155));
+    strip.setPixelColor(i+1+(strip.numPixels()/5)*3, c);
+    strip.setPixelColor(i+(strip.numPixels()/5)*3, (204, 20, 155));
+    strip.setPixelColor(i+1+(strip.numPixels()/5)*4, c);
+    strip.setPixelColor(i+(strip.numPixels()/5)*4, (204, 20, 155));
+    strip.show();
+    delay(wait);
+  }
+}
+
 //--------------------------------------------------------------------------
 // SETUP: the main arduino setup function.
 //--------------------------------------------------------------------------
@@ -512,6 +548,11 @@ void setup(){
 #endif  
 #endif
 
+// Initialize NeoPixel Ring
+strip.setBrightness(BRIGHTNESS);
+strip.begin();
+strip.show(); // Initialize all pixels to 'off'
+
 }
 
 
@@ -520,8 +561,9 @@ void setup(){
 //=============================================================================
 
 
-void loop(void)
-{
+void loop(void) {
+  colorCircle(strip.Color(0, 128, 128), 100); // Blue
+  
   //Start time
   lTimerStart = millis(); 
   DoBackgroundProcess();
@@ -2251,7 +2293,6 @@ void UpdateGaitCmd(byte *pszCmdLine) {
 
 
 #endif
-
 
 
 
