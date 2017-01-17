@@ -8,7 +8,7 @@
 // SSC-32 servo controller.
 //
 // Before uploading this code to your robot, make sure to properly configure the 
-// settings in the Hex_Cfg.h file. The settings which will need to be configured 
+// settings in the Quad_CFG.h file. The settings which will need to be configured 
 // for your specific robot are
 //   * The lenghts of each leg section
 //   * The mechanical limits of each servo
@@ -36,9 +36,9 @@
 #endif
 
 #include <SoftwareSerial.h>
-#include "Hex_CFG.h"
-#include "Phoenix.h"
-#include "Phoenix_Input_PS2.h"
-#include "Phoenix_Driver_SSC32.h"
-#include "Phoenix_Code.h"
+#include "Quad_CFG.h"
+#include "Jeb.h"
+#include "Jeb_Input_PS2.h"
+#include "Jeb_Driver_SSC32.h"
+#include "Jeb_Code.h"
 
