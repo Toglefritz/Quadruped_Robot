@@ -1,19 +1,20 @@
 //=============================================================================
-//Project Lynxmotion Phoenix
-//Description: Phoenix software
-//Software version: V2.0
-//Date: 29-10-2009
-//Programmer: Jeroen Janssen [aka Xan]
-//         Kurt Eckhardt(KurtE) converted to C and Arduino
-//   Kåre Halvorsen aka Zenta - Makes everything work correctly!     
+// Project: Quadruped
+// Description: This code controls a quadruped robot with three degrees of 
+//              freedom per leg. 
 //
-// This version of the Phoenix code was ported over to the Arduino Environement
-// and is specifically configured for the Lynxmotion BotBoarduino 
+// This code is specifically configured for the Lynxmotion BotBoarduino using the 
+// SSC-32 servo controller.
 //
-//=============================================================================
-//
-//KNOWN BUGS:
-//    - Lots ;)
+// Before uploading this code to your robot, make sure to properly configure the 
+// settings in the Hex_Cfg.h file. The settings which will need to be configured 
+// for your specific robot are
+//   * The lenghts of each leg section
+//   * The mechanical limits of each servo
+//   * The dimensions of the body
+//   * The angular offsets between the center of the body and each leg
+//   * The distance offset between the center of the body and each leg
+//   * Feed starting positions
 //
 //=============================================================================
 // Header Files

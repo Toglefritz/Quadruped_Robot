@@ -1,7 +1,10 @@
 //====================================================================
-//Project Lynxmotion Phoenix
+//Project: Quadruped
 //
-// Servo Driver - This version is setup to use the SSC-32 to control
+// Description: This code controls a quadruped robot with three degrees of 
+//              freedom per leg.
+//
+// Phoenix_Driver_SSC32.h - This version is setup to use the SSC-32 to control
 // the servos.
 //====================================================================
 

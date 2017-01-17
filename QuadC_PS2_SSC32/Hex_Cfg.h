@@ -1,22 +1,14 @@
-//====================================================================
-//Project Lynxmotion Phoenix
-//Description: 
-//    This is the hardware configuration for Kurt's Lynxmotion Quad
-//    using CH3-R types of legs.
+//=============================================================================
+// Project: Quadruped
+// Description: This code controls a quadruped robot with three degrees of 
+//              freedom per leg.
 //  
-//    This version of the Configuration file is set up to run on the
-//    Lynxmotion BotboardDuino board, which is similar  to the Arduino Duemilanove
+//    This version of the configuration file is set up to run on the
+//    Lynxmotion Botboardduino board, which is similar to the Arduino Duemilanove.
 //
 //    This version of configuration file assumes that the servos will be controlled
-//    by a Lynxmotion Servo controller SSC-32 and the user is using a Lynxmotion 
+//    by a Lynxmotion servo controller SSC-32 and the user is using a Lynxmotion 
 //    PS2 to control the robot.
-//
-//Date: March 18, 2012
-//Programmer: Kurt (aka KurtE)
-//
-//
-//NEW IN V1.0
-//   - First Release
 //
 //====================================================================
 #ifndef HEX_CFG_CHR3_H
@@ -40,13 +32,8 @@
 #define XBeeSerial        Serial3
 #endif
 
-//==================================================================================================================================
-// Define which input classes we will use. If we wish to use more than one we need to define USEMULTI - This will define a forwarder
-//    type implementation, that the Inputcontroller will need to call.  There will be some negotion for which one is in contol.
-//
-//  If this is not defined, The included Controller should simply implement the InputController Class...
-//==================================================================================================================================
-#define QUADMODE            // We are building for quad support...
+#define QUADMODE            // We are building a quadruped rather than the default
+                            // hexapod robot
 
 //#define USEMULTI
 //#define USEXBEE            // only allow to be defined on Megas...
@@ -83,26 +70,22 @@
 #define	cSSC_BINARYMODE	1			// Define if your SSC-32 card supports binary mode.
 #define cSSC_BAUD        38400   //SSC32 BAUD rate
 
-// Debug options
+//-------------------------------------------------------------------- 
+// [Debug options]
 //#define DEBUG_IOPINS    // used to control if we are going to use IO pins for debug support
 
-//==================================================================================================================================
-//==================================================================================================================================
-//==================================================================================================================================
-// CHR-3
-//==================================================================================================================================
-
-//[Assuming Botboarduino for this one
+//--------------------------------------------------------------------
+//[Botboarduino Pin Numbers]
 #define SOUND_PIN    5        // Botboarduino JR pin number
-
-// PS2 definitions
+// PS2 controller connections
 #define PS2_DAT      6        
 #define PS2_CMD      7
 #define PS2_SEL      8
 #define PS2_CLK      9
 
-#define cSSC_OUT     10      	//Output pin for (SSC32 RX) on BotBoard (Yellow)
-#define cSSC_IN      11      	//Input pin for (SSC32 TX) on BotBoard (Blue)
+#define cSSC_OUT     10      	// Output pin for (SSC32 RX) on BotBoard (Yellow)
+#define cSSC_IN      11      	// Input pin for (SSC32 TX) on BotBoard (Blue)
+
 // XBee was defined to use a hardware Serial port
 #define XBEE_BAUD        38400
 #define SERIAL_BAUD    38400
@@ -113,7 +96,6 @@
 #define cTurnOnVol   550     // 5.5V - optional part to say if voltage goes back up, turn it back on...
 
 //====================================================================
-// Warning I reversed my legs as I put left legs where right should be...
 //[SSC32 Pin Numbers]
 #define cRRCoxaPin      0   //Rear Right leg Hip Horizontal
 #define cRRFemurPin     1   //Rear Right leg Hip Vertical
@@ -196,13 +178,16 @@
 #define cLFTarsMax1	500	//4DOF ONLY - The kinematics will never exceed 23 deg though..
 
 //--------------------------------------------------------------------
-//[LEG DIMENSIONS]
-//Universal dimensions for each leg in mm
+// [LEG DIMENSIONS]
+// Universal dimensions for each leg in mm
+// Use these universal dimensions if each of the robot's legs has
+// the same dimensions.
 #define cXXCoxaLength     29    // This is for CH3-R with Type 3 legs
 #define cXXFemurLength    57
 #define cXXTibiaLength    141
 #define cXXTarsLength     85    // 4DOF only...
 
+// Individual dimensions for each leg in mm
 #define cRRCoxaLength     cXXCoxaLength	    //Right Rear leg
 #define cRRFemurLength    cXXFemurLength
 #define cRRTibiaLength    cXXTibiaLength
@@ -226,11 +211,13 @@
 
 //--------------------------------------------------------------------
 //[BODY DIMENSIONS]
+// This first section defines the angle from the center of the body to each of the legs
 #define cRRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
 #define cRFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
 #define cLRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
 #define cLFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
 
+// This second section defines the distances between the center of the body to each of the legs
 #define cRROffsetX      -54    //Distance X from center of the body to the Right Rear coxa
 #define cRROffsetZ       54    //Distance Z from center of the body to the Right Rear coxa
 #define cRFOffsetX      -54    //Distance X from center of the body to the Right Front coxa
@@ -265,7 +252,6 @@
 #define cLFInitPosX     CHexInitXZ45      //Start positions of the Left Front leg
 #define cLFInitPosY     CHexInitY
 #define cLFInitPosZ     -CHexInitXZ45
-
 
 #else
 #define cRRInitPosX     cHexInitXZ      //Start positions of the Right Rear leg

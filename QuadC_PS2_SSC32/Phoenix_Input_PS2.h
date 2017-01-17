@@ -1,67 +1,55 @@
-//====================================================================
-//Project Lynxmotion Phoenix
-//Description: Phoenix, control file.
-//The control input subroutine for the phoenix software is placed in this file.
-//Can be used with V2.0 and above
-//Configuration version: V1.0
-//Date: 25-10-2009
-//Programmer: Jeroen Janssen (aka Xan)
-//             Kurt Eckhardt (aka KurtE) - converted to c ported to Arduino...
+//=============================================================================
+// Project: Quadruped
+// Description: This code controls a quadruped robot with three degrees of 
+//              freedom per leg. 
 //
-//Hardware setup: PS2 version
+// The control input subroutine for the Capers software is placed in this file.
+//
+// Hardware setup: PS2 version
 // 
-//NEW IN V1.0
-//- First Release
+// PS2 CONTROLS:
+// [Common Controls]
+// Start - turn on/off the bot
+// L1Toggle - shift mode
+// L2Toggle - rotate mode
+// CircleToggle - single leg mode
+// Square - toggle balance mode
+// TriangleMove - body to 35 mm from the ground (walk pos) 
+//                and back to the ground
+// D-Pad up - body up 10 mm
+// D-Pad down - body down 10 mm
+// D-Pad left - decrease speed with 50mS
+// D-Pad right - increase speed with 50mS
 //
-//Walk method 1:
-//- Left StickWalk/Strafe
-//- Right StickRotate
+// Optional: L3 button down, Left stick can adjust leg positions...
+// or if OPT_SINGLELEG is not defined may try using Circle
 //
-//Walk method 2:
-//- Left StickDisable
-//- Right StickWalk/Rotate
+// [Walk Controls]
+// select - switch gaits
+// Left stick - (Walk mode 1) Walk/Strafe
+//              (Walk mode 2) Disable
+// Right stick - (Walk mode 1) Rotate, 
+//               (Walk mode 2) Walk/Rotate
+// R1Toggle - double gait travel speed
+// R2Toggle - double gait travel length
 //
+// [Shift Controls]
+// Left stick - shift body X/Z
+// Right stick - shift body Y and rotate body Y
 //
-//PS2 CONTROLS:
-//[Common Controls]
-//- StartTurn on/off the bot
-//- L1Toggle Shift mode
-//- L2Toggle Rotate mode
-//- CircleToggle Single leg mode
-//   - Square        Toggle Balance mode
-//- TriangleMove body to 35 mm from the ground (walk pos) 
-//and back to the ground
-//- D-Pad upBody up 10 mm
-//- D-Pad downBody down 10 mm
-//- D-Pad leftdecrease speed with 50mS
-//- D-Pad rightincrease speed with 50mS
+// [Rotate Controls]
+// Left stick - rotate body X/Z
+// Right Stick - rotate body Y
 //
-//[Walk Controls]
-//- selectSwitch gaits
-//- Left Stick(Walk mode 1) Walk/Strafe
-// (Walk mode 2) Disable
-//- Right Stick(Walk mode 1) Rotate, 
-//(Walk mode 2) Walk/Rotate
-//- R1Toggle Double gait travel speed
-//- R2Toggle Double gait travel length
+// [Single leg Controls]
+// select - switch legs
+// Left stick - move Leg X/Z (relative)
+// Right stick - move Leg Y (absolute)
+// R2Hold/release - leg position
 //
-//[Shift Controls]
-//- Left StickShift body X/Z
-//- Right StickShift body Y and rotate body Y
-//
-//[Rotate Controls]
-//- Left StickRotate body X/Z
-//- Right StickRotate body Y
-//
-//[Single leg Controls]
-//- selectSwitch legs
-//- Left StickMove Leg X/Z (relative)
-//- Right StickMove Leg Y (absolute)
-//- R2Hold/release leg position
-//
-//[GP Player Controls]
-//- selectSwitch Sequences
-//- R2Start Sequence
+// [GP Player Controls]
+// select - switch Sequences
+// R2Start - sequence
 //
 //====================================================================
 // [Include files]

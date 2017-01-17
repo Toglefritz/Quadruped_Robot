@@ -1,25 +1,18 @@
 //=============================================================================
-//Project Lynxmotion Phoenix
-//Description: Phoenix software
-//Software version: V2.0
-//Date: 29-10-2009
-//Programmer: Jeroen Janssen [aka Xan]
-//         Kurt Eckhardt(KurtE) converted to C and Arduino
-//   Kåre Halvorsen aka Zenta - Makes everything work correctly!     
+// Project: Quadruped
+// Description: This code controls a quadruped robot with three degrees of 
+//              freedom per leg. 
 //
-// This version of the Phoenix code was ported over to the Arduino Environement
-// and is specifically configured for the Lynxmotion BotBoarduino 
+// Phoenix.h - This is the first header file that is needed to build
+//      a Phoenix program for a specific Hex Robot.
+//
+//
+// This file assumes that the main source file either directly or through include
+// file has defined all of the configuration information for the specific robot.
 //
 // Phoenix_Code.h
 //
-//     This contains the main code for the Phoenix project.  It is included in
-//     all of the different configurations of the phoenix code.
-//
-//NEW IN V2.X
-//=============================================================================
-//
-//KNOWN BUGS:
-//    - Lots ;)
+//     This contains the main code for the Capers project.
 //
 //=============================================================================
 // Header Files
