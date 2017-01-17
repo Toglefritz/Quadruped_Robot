@@ -445,11 +445,11 @@ void colorCircle(uint32_t c, uint8_t wait) {
     strip.setPixelColor(i+1, c);
     strip.setPixelColor(i, (0, 0, 0));
     strip.setPixelColor(i+1+(strip.numPixels()/2), c);
-    strip.setPixelColor(i+(strip.numPixels()/2), (204, 20, 155));
+    strip.setPixelColor(i+(strip.numPixels()/2), (178, 66, 0));
     strip.setPixelColor(i+1+(strip.numPixels()/4), c);
-    strip.setPixelColor(i+(strip.numPixels()/4), (204, 20, 155));
+    strip.setPixelColor(i+(strip.numPixels()/4), (178, 66, 0));
     strip.setPixelColor(i+1+(strip.numPixels()/4)*3, c);
-    strip.setPixelColor(i+(strip.numPixels()/4)*3, (204, 20, 155));
+    strip.setPixelColor(i+(strip.numPixels()/4)*3, (178, 66, 0));
     strip.show();
     delay(wait);
   }
