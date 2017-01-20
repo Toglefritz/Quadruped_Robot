@@ -1,4 +1,4 @@
-# Jeb the Quadruped Robot
+# Jebediah the Quadruped Robot
 
 ## Project Description
 
