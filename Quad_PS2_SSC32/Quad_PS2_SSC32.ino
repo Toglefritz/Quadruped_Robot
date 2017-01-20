@@ -1,5 +1,5 @@
 //=============================================================================
-// Project: Jeb the Quadruped Robot
+// Project: Jebediah the Quadruped Robot
 //
 // Description: This code controls a quadruped robot with three degrees of 
 //              freedom per leg. 
