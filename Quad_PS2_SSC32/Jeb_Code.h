@@ -434,6 +434,7 @@ extern boolean TerminalMonitor(void);
 
 //--------------------------------------------------------------------
 // [NeoPixel Ring Setup]
+/*
 #define PIN 3
 #define NUM_LEDS 16
 #define BRIGHTNESS 20
@@ -454,6 +455,7 @@ void colorCircle(uint32_t c, uint8_t wait) {
     delay(wait);
   }
 }
+*/
 
 //--------------------------------------------------------------------------
 // SETUP: the main arduino setup function.
@@ -537,9 +539,11 @@ void setup(){
 #endif
 
 // Initialize NeoPixel Ring
+/*
 strip.setBrightness(BRIGHTNESS);
 strip.begin();
 strip.show(); // Initialize all pixels to 'off'
+*/
 
 }
 
@@ -550,7 +554,7 @@ strip.show(); // Initialize all pixels to 'off'
 
 
 void loop(void) {
-  colorCircle(strip.Color(0, 128, 128), 100); // Blue
+  //colorCircle(strip.Color(0, 128, 128), 100); // Blue
   
   //Start time
   lTimerStart = millis(); 

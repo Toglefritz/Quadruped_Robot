@@ -212,10 +212,10 @@
 //--------------------------------------------------------------------
 //[BODY DIMENSIONS]
 // This first section defines the angle from the center of the body to each of the legs
-#define cRRCoxaAngle1   -45   //Default Coxa setup angle, decimals = 1
-#define cRFCoxaAngle1    45   //Default Coxa setup angle, decimals = 1
-#define cLRCoxaAngle1   -45   //Default Coxa setup angle, decimals = 1
-#define cLFCoxaAngle1    45   //Default Coxa setup angle, decimals = 1
+#define cRRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
+#define cRFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
+#define cLRCoxaAngle1   -450   //Default Coxa setup angle, decimals = 1
+#define cLFCoxaAngle1    450   //Default Coxa setup angle, decimals = 1
 
 // This second section defines the distances between the center of the body to each of the legs
 #define cRROffsetX      -70    //Distance X from center of the body to the Right Rear coxa
@@ -251,23 +251,6 @@
 #define cLFInitPosX     CHexInitXZ45      //Start positions of the Left Front leg
 #define cLFInitPosY     CHexInitY
 #define cLFInitPosZ     -CHexInitXZ45
-
-#else
-#define cRRInitPosX     cHexInitXZ      //Start positions of the Right Rear leg
-#define cRRInitPosY     CHexInitY
-#define cRRInitPosZ     0
-
-#define cRFInitPosX     cHexInitXZ      //Start positions of the Right Front leg
-#define cRFInitPosY     CHexInitY
-#define cRFInitPosZ     0
-
-#define cLRInitPosX     CHexInitXZCos60      //Start positions of the Left Rear leg
-#define cLRInitPosY     CHexInitY
-#define cLRInitPosZ     0
-
-#define cLFInitPosX     cHexInitXZ      //Start positions of the Left Front leg
-#define cLFInitPosY     CHexInitY
-#define cLFInitPosZ     0
 #endif
 //--------------------------------------------------------------------
 //[Tars factors used in formula to calc Tarsus angle relative to the ground]
