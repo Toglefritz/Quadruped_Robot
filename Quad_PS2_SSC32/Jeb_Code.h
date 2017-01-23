@@ -434,33 +434,19 @@ extern boolean TerminalMonitor(void);
 
 //--------------------------------------------------------------------
 // [NeoPixel Ring Setup]
-/*
 #define PIN 3
 #define NUM_LEDS 16
 #define BRIGHTNESS 20
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRBW + NEO_KHZ800);
-
-// Fill the dots one after the other with a color
-void colorCircle(uint32_t c, uint8_t wait) {
-  for(uint16_t i=0; i<strip.numPixels(); i++) {
-    strip.setPixelColor(i+1, c);
-    strip.setPixelColor(i, (0, 0, 0));
-    strip.setPixelColor(i+1+(strip.numPixels()/2), c);
-    strip.setPixelColor(i+(strip.numPixels()/2), (178, 66, 0));
-    strip.setPixelColor(i+1+(strip.numPixels()/4), c);
-    strip.setPixelColor(i+(strip.numPixels()/4), (178, 66, 0));
-    strip.setPixelColor(i+1+(strip.numPixels()/4)*3, c);
-    strip.setPixelColor(i+(strip.numPixels()/4)*3, (178, 66, 0));
-    strip.show();
-    delay(wait);
-  }
-}
-*/
+int pixelCounter = 0;
 
 //--------------------------------------------------------------------------
 // SETUP: the main arduino setup function.
 //--------------------------------------------------------------------------
 void setup(){
+// Start NeoPixel ring
+strip.begin();
+  
 #ifdef OPT_SKETCHSETUP
   SketchSetup();
 #endif  
@@ -554,7 +540,44 @@ strip.show(); // Initialize all pixels to 'off'
 
 
 void loop(void) {
-  //colorCircle(strip.Color(0, 128, 128), 100); // Blue
+  strip.setBrightness(BRIGHTNESS);
+  if(pixelCounter < strip.numPixels() - 1) {
+    pixelCounter++;  
+  }
+  else {
+
+    pixelCounter = 0;
+  }
+  // If pixelCounter  = 0
+  if(pixelCounter == 0) {
+    // Turn on set of three pixels
+    strip.setPixelColor(strip.numPixels(), 178, 66, 0);
+    strip.setPixelColor(pixelCounter, 178, 66, 0);
+    strip.setPixelColor(pixelCounter + 1, 178, 66, 0);  
+    // Turn off previous pixel
+    strip.setPixelColor(strip.numPixels() - 2, 0, 0, 0);
+  }
+
+  // If pixelCounter = 15
+  else if(pixelCounter == strip.numPixels() - 1) {
+    // Turn on set of three pixels
+    strip.setPixelColor(strip.numPixels() - 1, 178, 66, 0);
+    strip.setPixelColor(pixelCounter, 178, 66, 0);
+    strip.setPixelColor(0, 178, 66, 0);
+    // Turn off previous pixel
+    strip.setPixelColor(strip.numPixels() - 2, 0, 0, 0);
+  }
+  // Otherwise
+  else {
+    // Turn on set of three pixels
+    strip.setPixelColor(strip.numPixels() - 1, 178, 66, 0);
+    strip.setPixelColor(pixelCounter, 178, 66, 0);
+    strip.setPixelColor(pixelCounter + 1, 178, 66, 0);
+    // Turn off previous pixel
+    strip.setPixelColor(pixelCounter - 2, 0, 0, 0);
+  }
+  
+  strip.show();
   
   //Start time
   lTimerStart = millis(); 
